@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.13.4.1] - 2026-03-29 — Sidebar Agent Action Expansion
+
+The Chrome sidebar agent can now write files, enabling full IDE assistance directly from the side panel.
+
+### Fixed
+
+- **Sidebar Agent Tool Restrictions.** Added `Write` to the sidebar agent's allowed tools, fixing a bug where it couldn't operate on local files.
+- **Empty State UX.** Prevented the agent output container from hanging silently when no textual response is produced; it now displays a clear "Claude finished but produced no output" message.
+
 ## [0.13.4.0] - 2026-03-29 — Sidebar Defense
 
 The Chrome sidebar now defends against prompt injection attacks. Three layers: XML-framed prompts with trust boundaries, a command allowlist that restricts bash to browse commands only, and Opus as the default model (harder to manipulate).

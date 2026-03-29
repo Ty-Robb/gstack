@@ -157,6 +157,13 @@ function handleAgentEvent(entry) {
     // Remove thinking indicator
     const thinking = document.getElementById('agent-thinking');
     if (thinking) thinking.remove();
+    // If agent finished with no text output, show a "no output" message
+    if (agentContainer && !agentTextEl) {
+      const empty = document.createElement('div');
+      empty.className = 'agent-empty';
+      empty.textContent = 'Claude finished but produced no output.';
+      agentContainer.appendChild(empty);
+    }
     // Add timestamp
     if (agentContainer) {
       const ts = document.createElement('span');
