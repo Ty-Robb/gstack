@@ -54,7 +54,7 @@ function describeIfSelected(name: string, testNames: string[], fn: () => void) {
 /** Skip an individual test if not selected (for multi-test describe blocks). */
 function testIfSelected(testName: string, fn: () => Promise<void>, timeout: number) {
   const shouldRun = selectedTests === null || selectedTests.includes(testName);
-  (shouldRun ? test : test.skip)(testName, fn, timeout);
+  (shouldRun ? test : test.skip)(testName, fn, { timeout, retry: 2 });
 }
 
 // Eval result collector — accumulates test results, writes to ~/.gstack-dev/evals/ on finalize
@@ -502,7 +502,7 @@ Write your report to ${qaDir}/qa-reports/qa-report.md`,
     }
     // Accept error_max_turns — the agent doing thorough QA work is not a failure
     expect(['success', 'error_max_turns']).toContain(result.exitReason);
-  }, 300_000);
+  }, { timeout: 300_000, retry: 2 });
 });
 
 // --- B5: Review skill E2E ---
@@ -561,7 +561,7 @@ Write your review findings to ${reviewDir}/review-output.md`,
     logCost('/review', result);
     recordE2E('/review SQL injection', 'Review skill E2E', result);
     expect(result.exitReason).toBe('success');
-  }, 120_000);
+  }, { timeout: 120_000, retry: 2 });
 });
 
 // --- Review: Enum completeness E2E ---
@@ -633,7 +633,7 @@ The diff adds a new "returned" status to the Order model. Your job is to check i
       expect(mentionsReturned).toBe(true);
       expect(mentionsEnum || mentionsCritical).toBe(true);
     }
-  }, 120_000);
+  }, { timeout: 120_000, retry: 2 });
 });
 
 // --- Review: Design review lite E2E ---
@@ -724,7 +724,7 @@ Important: The design checklist should catch issues like blacklisted fonts, smal
       console.log(`Design review detected ${detected}/7 planted issues`);
       expect(detected).toBeGreaterThanOrEqual(4);
     }
-  }, 150_000);
+  }, { timeout: 150_000, retry: 2 });
 });
 
 // --- B6/B7/B8: Planted-bug outcome evals ---

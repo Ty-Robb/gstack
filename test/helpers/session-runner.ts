@@ -149,6 +149,7 @@ export async function runSkillTest(options: {
     '--dangerously-skip-permissions',
     '--max-turns', String(maxTurns),
     '--allowed-tools', ...allowedTools,
+    '--model', 'claude-sonnet-4-6',
   ];
 
   // Write prompt to a temp file and pipe it via shell to avoid stdin buffering issues
