@@ -353,14 +353,7 @@
 **Priority:** P2
 **Depends on:** Eval persistence (shipped in v0.3.6)
 
-### E2E model pinning
 
-**What:** Pin E2E tests to claude-sonnet-4-6 for cost efficiency, add retry:2 for flaky LLM responses.
-
-**Why:** Reduce E2E test cost and flakiness.
-
-**Effort:** XS
-**Priority:** P2
 
 ### Eval web dashboard
 
@@ -520,3 +513,13 @@ Shipped as `/design-consultation` on garrytan/design branch. Renamed from `/setu
 ### Auto-upgrade mode + smart update check
 - Config CLI (`bin/gstack-config`), auto-upgrade via `~/.gstack/config.yaml`, 12h cache TTL, exponential snooze backoff (24h→48h→1wk), "never ask again" option, vendored copy sync on upgrade
 **Completed:** v0.3.8
+
+### E2E model pinning
+
+**What:** Pin E2E tests to claude-sonnet-4-6 for cost efficiency, add retry:2 for flaky LLM responses.
+
+**Why:** Reduce E2E test cost and flakiness.
+
+**Effort:** XS
+**Priority:** P2
+**Completed:** v0.6.4.1 (2026-03-29)

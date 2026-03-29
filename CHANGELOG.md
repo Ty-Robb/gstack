@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.4.1] - 2026-03-29
+
+### Changed
+
+- **E2E tests model pinning.** Pinned the E2E framework completely to `claude-sonnet-4-6` for improved stability and cost-efficiency.
+- Tests now automatically execute with `retry: 2` to elegantly handle flaky LLM responses and timeouts without failing the CI pipeline unnecessarily.
+
 ## [0.6.4.0] - 2026-03-17
 
 ### Added
